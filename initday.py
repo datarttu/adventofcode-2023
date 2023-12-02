@@ -21,7 +21,7 @@ def main():
     )
     r.raise_for_status()
 
-    filepath = f"inputs/day{day_number}.txt"
+    filepath = f"inputs/day_{day_number}.txt"
 
     with open(filepath, "w") as f:
         f.write(r.text)

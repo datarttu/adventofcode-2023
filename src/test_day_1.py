@@ -1,4 +1,4 @@
-from day1 import *
+from day_1 import *
 
 
 def test_calculate_sum_from_file():
