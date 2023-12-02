@@ -31,6 +31,20 @@ class RGB:
             )
         )
 
+    def maxels(self, other):
+        """
+        RGB(1, 2, 3).maxels(RGB(3, 2, 1)) == RGB(3, 2, 3)
+        """
+        return RGB(
+            *(
+                max(getattr(self, color.name), getattr(other, color.name))
+                for color in fields(self)
+            )
+        )
+
+    def pow(self):
+        return self.red * self.green * self.blue
+
     @classmethod
     def from_string(cls, string: str):
         """
@@ -51,6 +65,7 @@ class RGB:
 class Game:
     game_id: int
     possible: bool = True
+    cubes_required: RGB = RGB()
 
     def __init__(self, string: str, max_cubes: RGB):
         """Parse a Game from string."""
@@ -61,9 +76,10 @@ class Game:
             cubes = RGB.from_string(cs)
             if cubes > max_cubes:
                 self.possible = False
+            self.cubes_required = self.cubes_required.maxels(cubes)
 
     def __repr__(self):
-        return f"Game {self.game_id}: {self.possible}"
+        return f"Game {self.game_id}: {self.possible}. Minimum: {self.cubes_required}"
 
 
 def parse_games_from_file(filepath: str, max_cubes: RGB) -> list[Game]:
@@ -76,6 +92,10 @@ def main():
     pprint(games)
     ids = [g.game_id for g in games if g.possible]
     print(f"Sum of the ids of possible games is {sum(ids)}!")
+
+    # PART 2
+    powers = [g.cubes_required.pow() for g in games]
+    print(f"Sum of the powers of all games is {sum(powers)}!")
 
 
 if __name__ == "__main__":
