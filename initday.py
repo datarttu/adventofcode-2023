@@ -2,6 +2,7 @@
 
 import httpx
 import sys
+from pathlib import Path
 
 
 def main():
@@ -26,6 +27,11 @@ def main():
         f.write(r.text)
 
     print(f"Input saved to {filepath} ✅")
+
+    Path(f"src/day_{day_number}.py").touch()
+    Path(f"src/test_day_{day_number}.py").touch()
+
+    print("Python files created ✅")
 
 
 if __name__ == "__main__":
