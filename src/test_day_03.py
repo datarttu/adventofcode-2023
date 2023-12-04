@@ -1,4 +1,4 @@
-from day_3 import *
+from day_03 import *
 
 
 def test_solve_1():

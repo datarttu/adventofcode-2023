@@ -1,4 +1,4 @@
-from day_2 import *
+from day_02 import *
 
 
 def test_rgb_equality_gt():

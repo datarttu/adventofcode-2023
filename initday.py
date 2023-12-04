@@ -28,8 +28,8 @@ def main():
 
     print(f"Input saved to {filepath} ✅")
 
-    Path(f"src/day_{day_number}.py").touch()
-    Path(f"src/test_day_{day_number}.py").touch()
+    Path(f"src/day_{day_number:02}.py").touch()
+    Path(f"src/test_day_{day_number:02}.py").touch()
 
     print("Python files created ✅")
 
