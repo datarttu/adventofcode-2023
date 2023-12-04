@@ -9,3 +9,8 @@ def test_card_points():
 
 def test_total():
     assert game("../inputs/day_4_example.txt") == 13
+
+
+def test_copying_game():
+    result = copying_game("../inputs/day_4_example.txt")
+    assert result == 30
