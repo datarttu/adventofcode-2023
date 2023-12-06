@@ -21,15 +21,15 @@ def main():
     )
     r.raise_for_status()
 
-    filepath = f"inputs/day_{day_number}.txt"
+    filepath = f"inputs/day_{day_number:0>2}.txt"
 
     with open(filepath, "w") as f:
         f.write(r.text)
 
     print(f"Input saved to {filepath} ✅")
 
-    Path(f"src/day_{day_number:02}.py").touch()
-    Path(f"src/test_day_{day_number:02}.py").touch()
+    Path(f"src/day_{day_number:0>2}.py").touch()
+    Path(f"src/test_day_{day_number:0>2}.py").touch()
 
     print("Python files created ✅")
 
