@@ -7,7 +7,9 @@ def read_input(filepath) -> list[list[int]]:
     return [[int(x) for x in l.split(" ")] for l in read_file_as_list(filepath)]
 
 
-def extrapolate(numbers: list[int]) -> int:
+def extrapolate(numbers: list[int], reverse: bool = False) -> int:
+    if reverse:
+        numbers = list(reversed(numbers))
     diffs = deque([numbers])
 
     while not all(d == 0 for d in diffs[-1]):
@@ -22,6 +24,11 @@ def extrapolate(numbers: list[int]) -> int:
 
 def main() -> None:
     results = [extrapolate(nl) for nl in read_input("../inputs/day_09.txt")]
+    print(sum(results))
+
+    results = [
+        extrapolate(nl, reverse=True) for nl in read_input("../inputs/day_09.txt")
+    ]
     print(sum(results))
 
 

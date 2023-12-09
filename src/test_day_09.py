@@ -8,3 +8,13 @@ def test_extrapolate():
 def test_example():
     result = sum([extrapolate(nl) for nl in read_input("../inputs/day_09_example.txt")])
     assert result == 114
+
+
+def test_part_2():
+    result = sum(
+        [
+            extrapolate(nl, reverse=True)
+            for nl in read_input("../inputs/day_09_example.txt")
+        ]
+    )
+    assert result == 2
